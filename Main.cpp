@@ -5,21 +5,6 @@
 #include "LoadShaders.h"
 using namespace std;
 
-/*
-* This is an example of drawing a cone as an intro to OpenGL.
-*
-* Author:  Jerry Heuring
-* Date:    October 6, 2014
-*
-* Bugs:
-*
-*
-* Revisions:
-*   8/24/2016 -- Changed to handle call for generateCone.  Removed some
-*                "dead" code as well.
-*
-*
-*/
 #define BUFFER_OFFSET(x)  ((const void*) (x))
 
 float * generateCone(float baseRadius, float height, float topRadius, int nbrOfSteps, int &nbrOfValues);
@@ -69,8 +54,10 @@ void init() {
 
 	GLfloat * colors = new GLfloat[nbrOfElements];
 
+	GLfloat dt = 2 * 3.1415 / (nbrOfElements / 3);
+
 	for (int i = 0; i < nbrOfElements/3; i++) {
-		colors[3 * i] = 0.2 + (i / (nbrOfElements / 3.0) * 0.8);
+		colors[3 * i] = sin(dt * i)/3 + 0.6666667;
 		colors[3 * i + 1] = 0.0;
 		colors[3 * i + 2] = 0.0;
 	}
